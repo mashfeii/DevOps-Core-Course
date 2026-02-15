@@ -8,6 +8,9 @@ on:
       - '.github/workflows/go-ci.yml'
   pull_request:
     branches: [main, master]
+    paths:
+      - 'app_go/**'
+      - '.github/workflows/go-ci.yml'
 
 env:
   DOCKER_IMAGE: mashfeii/devops-info-service-go
@@ -65,7 +68,7 @@ jobs:
           files: app_go/coverage.out
           flags: go
           token: ${{ secrets.CODECOV_TOKEN }}
-        if: github.event_name == 'push'
+        if: always()
 
   build:
     name: Build and Push Docker

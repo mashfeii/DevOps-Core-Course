@@ -8,6 +8,9 @@ on:
       - '.github/workflows/python-ci.yml'
   pull_request:
     branches: [main, master]
+    paths:
+      - 'app_python/**'
+      - '.github/workflows/python-ci.yml'
 
 env:
   DOCKER_IMAGE: mashfeii/devops-info-service
@@ -69,7 +72,7 @@ jobs:
           files: app_python/coverage.xml
           flags: python
           token: ${{ secrets.CODECOV_TOKEN }}
-        if: github.event_name == 'push'
+        if: always()
 
   security:
     name: Security Scan
