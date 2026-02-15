@@ -91,6 +91,19 @@ on:
 
 ---
 
+### 6. Caching Performance
+
+![cache-miss](screenshots/cache-miss.png)
+![cache-hit](screenshots/cache-hit.png)
+
+**Metrics:**
+
+- Without cache (first run): 41 seconds
+- With cache (subsequent): 29 seconds
+- **Time saved:** 12 seconds (~30% improvement)
+
+---
+
 ## CI Workflow Comparison
 
 | Aspect               | Python CI                    | Go CI                           |
