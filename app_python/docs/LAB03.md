@@ -128,18 +128,6 @@ on:
 | **Coverage Threshold**   | `--cov-fail-under=70`                                                  | Enforces minimum test coverage; prevents regression                  |
 | **Security Scanning**    | Snyk integration with `severity-threshold=high`                        | Catches known vulnerabilities in dependencies early                  |
 
-### Caching Performance
-
-![caching-comparison](screenshots/caching-comparison.png)
-
-**Metrics:**
-
-- Without cache (first run): ~XX seconds
-- With cache (subsequent): ~XX seconds
-- **Time saved:** ~XX seconds (~XX% improvement)
-
----
-
 ## Key Decisions
 
 ### Versioning: CalVer vs SemVer
