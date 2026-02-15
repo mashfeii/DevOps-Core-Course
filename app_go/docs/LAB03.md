@@ -79,7 +79,7 @@ on:
 
 ### 4. Path Filters Working
 
-![path-filters-go](screenshots/path-filters-go.png)
+I tried many times to refactor pipeline to validate paths, but none of them is successfull :(
 
 ---
 
