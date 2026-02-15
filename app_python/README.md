@@ -1,5 +1,5 @@
-![Python CI](https://github.com/mashfeii/DevOps/actions/workflows/python-ci.yml/badge.svg)
-![Coverage](https://codecov.io/gh/mashfeii/DevOps/branch/master/graph/badge.svg)
+![Python CI](https://github.com/mashfeii/DevOps-Core-Course/actions/workflows/python-ci.yml/badge.svg)
+![Coverage](https://codecov.io/gh/mashfeii/DevOps-Core-Course/branch/master/graph/badge.svg)
 
 # devops info service
 

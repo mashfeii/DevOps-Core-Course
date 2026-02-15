@@ -63,7 +63,7 @@ on:
 
 ![workflow-run](screenshots/workflow-run.png)
 
-**Link to workflow run:** `https://github.com/mashfeii/DevOps-Core-Course/actions/runs/22034442788`
+**Link to workflow run:** `https://github.com/mashfeii/DevOps-Core-Course/actions/runs/22034786861`
 
 ---
 
