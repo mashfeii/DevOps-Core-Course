@@ -1,5 +1,5 @@
-![Go CI](https://github.com/mashfeii/DevOps/actions/workflows/go-ci.yml/badge.svg)
-![Coverage](https://codecov.io/gh/mashfeii/DevOps/branch/master/graph/badge.svg?flag=go)
+![Go CI](https://github.com/mashfeii/DevOps-Core-Course/actions/workflows/go-ci.yml/badge.svg)
+![Coverage](https://codecov.io/gh/mashfeii/DevOps-Core-Course/branch/master/graph/badge.svg?flag=go)
 
 # devops info service (go)
 
