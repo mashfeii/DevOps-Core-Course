@@ -63,7 +63,7 @@ on:
 
 ![workflow-run](screenshots/workflow-run.png)
 
-**Link to workflow run:** `https://github.com/mashfeii/DevOps/actions/runs/XXXXX`
+**Link to workflow run:** `https://github.com/mashfeii/DevOps-Core-Course/actions/runs/22034442788`
 
 ---
 
@@ -111,7 +111,7 @@ on:
 
 **Snyk results summary:**
 
-- Vulnerabilities found: [X critical, X high, X medium, X low]
+- Vulnerabilities found: [0 critical, 0 high, 0 medium, 26 low]
 
 ---
 
