@@ -150,6 +150,7 @@ func notFoundHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
+// Program entry point
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
