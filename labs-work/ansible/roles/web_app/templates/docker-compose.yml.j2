@@ -1,0 +1,9 @@
+services:
+  {{ app_name }}:
+    image: {{ docker_image }}:{{ docker_tag }}
+    container_name: {{ app_name }}
+    restart: {{ app_restart_policy }}
+    ports:
+      - "{{ app_port }}:{{ app_internal_port }}"
+    labels:
+      managed-by: ansible
