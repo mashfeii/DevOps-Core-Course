@@ -21,10 +21,10 @@
     - name: Retry apt update with fix-missing
       ansible.builtin.apt:
         update_cache: true
-      register: apt_fix
+      register: common_apt_fix
       retries: 3
       delay: 5
-      until: apt_fix is success
+      until: common_apt_fix is success
 
     - name: Retry package installation
       ansible.builtin.apt:

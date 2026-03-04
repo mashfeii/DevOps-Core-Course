@@ -127,12 +127,12 @@ Replaced `community.docker.docker_container` with `docker_compose_v2` module. Be
 
 ```yaml
 services:
-  {{ app_name }}:
-    image: {{ docker_image }}:{{ docker_tag }}
-    container_name: {{ app_name }}
-    restart: {{ app_restart_policy }}
+  {{ web_app_name }}:
+    image: {{ web_app_image }}:{{ web_app_tag }}
+    container_name: {{ web_app_name }}
+    restart: {{ web_app_restart_policy }}
     ports:
-      - "{{ app_port }}:{{ app_internal_port }}"
+      - "{{ web_app_port }}:{{ web_app_internal_port }}"
     labels:
       managed-by: ansible
 ```
@@ -141,16 +141,16 @@ No `version:` key - obsolete in Compose v2 spec.
 
 ### Variables
 
-| Variable              | Default Value                                  | Description                |
-| --------------------- | ---------------------------------------------- | -------------------------- |
-| `app_name`            | `devops-info-service`                          | Container and service name |
-| `docker_image`        | `{{ dockerhub_username }}/devops-info-service` | Docker image reference     |
-| `docker_tag`          | `latest`                                       | Image tag                  |
-| `app_port`            | `5000`                                         | Host port                  |
-| `app_internal_port`   | `5173`                                         | Container port             |
-| `compose_project_dir` | `/opt/{{ app_name }}`                          | Compose project directory  |
-| `app_restart_policy`  | `unless-stopped`                               | Container restart policy   |
-| `web_app_wipe`        | `false`                                        | Enable wipe mode           |
+| Variable                | Default Value                                  | Description                |
+| ----------------------- | ---------------------------------------------- | -------------------------- |
+| `web_app_name`          | `devops-info-service`                          | Container and service name |
+| `web_app_image`         | `{{ dockerhub_username }}/devops-info-service` | Docker image reference     |
+| `web_app_tag`           | `latest`                                       | Image tag                  |
+| `web_app_port`          | `5000`                                         | Host port                  |
+| `web_app_internal_port` | `5173`                                         | Container port             |
+| `web_app_compose_dir`   | `/opt/{{ web_app_name }}`                      | Compose project directory  |
+| `web_app_restart_policy`| `unless-stopped`                               | Container restart policy   |
+| `web_app_wipe`          | `false`                                        | Enable wipe mode           |
 
 ### Role Dependencies
 
@@ -166,7 +166,7 @@ No `version:` key - obsolete in Compose v2 spec.
 
 ## Wipe Logic
 
-Double-gated cleanup: controlled by `web_app_wipe` variable (default: `false`) and `web_app_wipe` tag. Uses `ignore_errors: true` on compose down for idempotency.
+Double-gated cleanup: controlled by `web_app_wipe` variable (default: `false`) and `web_app_wipe` tag. Uses `failed_when: false` on compose down for idempotency.
 
 Steps: `docker compose down` -> remove compose file -> remove app directory.
 
@@ -218,13 +218,13 @@ Two GitHub Actions workflows with `workflow_dispatch` for manual triggers:
 
 The `web_app` role is reused for both apps by overriding variables:
 
-| Variable              | Python App                     | Go App                            |
-| --------------------- | ------------------------------ | --------------------------------- |
-| `app_name`            | `devops-info-service`          | `devops-info-service-go`          |
-| `docker_image`        | `mashfeii/devops-info-service` | `mashfeii/devops-info-service-go` |
-| `app_port`            | `5000`                         | `8001`                            |
-| `app_internal_port`   | `5173`                         | `8080`                            |
-| `compose_project_dir` | `/opt/devops-info-service`     | `/opt/devops-info-service-go`     |
+| Variable               | Python App                     | Go App                            |
+| ---------------------- | ------------------------------ | --------------------------------- |
+| `web_app_name`         | `devops-info-service`          | `devops-info-service-go`          |
+| `web_app_image`        | `mashfeii/devops-info-service` | `mashfeii/devops-info-service-go` |
+| `web_app_port`         | `5000`                         | `8001`                            |
+| `web_app_internal_port`| `5173`                         | `8080`                            |
+| `web_app_compose_dir`  | `/opt/devops-info-service`     | `/opt/devops-info-service-go`     |
 
 Playbooks: `deploy_python.yml`, `deploy_bonus.yml` (individual), `deploy_all.yml` (both).
 
@@ -255,7 +255,7 @@ VM IP changed since i forgot to open 8001 port and needed to re-apply terraform 
 
 **Problem:** `docker compose down` fails if compose file doesn't exist yet
 
-**Solution:** `ignore_errors: true` on compose down task for idempotent wipe
+**Solution:** `failed_when: false` on compose down task for idempotent wipe
 
 ---
 
