@@ -75,6 +75,7 @@ jobs:
         run: |
           ansible-playbook playbooks/deploy.yml \
             --vault-password-file /tmp/vault_pass \
+            --private-key ~/.ssh/devops-lab04 \
             --tags app_deploy
 
       - name: Verify deployment
