@@ -44,6 +44,7 @@ jobs:
     name: Deploy Go Application
     runs-on: ubuntu-latest
     needs: lint
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -78,7 +79,7 @@ jobs:
         working-directory: labs-work/ansible
         run: |
           ansible-playbook playbooks/deploy_bonus.yml \
-            --vault-password-file /tmp/vault_pass \
+            --vault-password-rile /tmp/vault_pass \
             --private-key ~/.ssh/devops-lab04 \
             --tags app_deploy
 
